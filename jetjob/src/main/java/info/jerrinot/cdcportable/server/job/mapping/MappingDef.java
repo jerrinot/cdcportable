@@ -1,4 +1,4 @@
-package info.jerrinot.cdcportable.client.job.mapping;
+package info.jerrinot.cdcportable.server.job.mapping;
 
 import com.hazelcast.nio.serialization.FieldType;
 

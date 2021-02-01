@@ -1,4 +1,4 @@
-package info.jerrinot.cdcportable.client.job;
+package info.jerrinot.cdcportable.server.job;
 
 import com.hazelcast.jet.Jet;
 import com.hazelcast.jet.JetInstance;
@@ -9,8 +9,8 @@ import com.hazelcast.jet.config.JobConfig;
 import com.hazelcast.jet.pipeline.Pipeline;
 import com.hazelcast.jet.pipeline.Sink;
 import com.hazelcast.jet.pipeline.StreamSource;
-import info.jerrinot.cdcportable.client.job.mapping.ChangeRecordMapper;
-import info.jerrinot.cdcportable.client.job.mapping.MappingDef;
+import info.jerrinot.cdcportable.server.job.mapping.ChangeRecordMapper;
+import info.jerrinot.cdcportable.server.job.mapping.MappingDef;
 import info.jerrinot.cdcportable.client.utils.Constants;
 
 import static com.hazelcast.nio.serialization.FieldType.INT;
