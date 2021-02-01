@@ -47,6 +47,10 @@ The mapper uses programmatic construction of the Portable entries thus it does n
 It stores the resulting Portable entries in IMap. This means any client can query the IMap, you can push it over WAN, etc. 
 Again, all this is possible even when server does not have bytecode of the portable entries available.   
 
+## Architecture Diagram
+This depicts target architecture
+![architecture diagram](https://raw.githubusercontent.com/jerrinot/cdcportable/master/docs/architecture.png)
+
 ## Prerequisites
 1. JDK 15
 2. Hazelcast Jet 4.4
