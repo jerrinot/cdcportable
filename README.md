@@ -26,7 +26,7 @@ The project consists of multiple modules
 1. Use Docker to start Postgres database:  
    `docker run -it --rm --name postgres -p 5432:5432     -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres     -e POSTGRES_PASSWORD=postgres debezium/example-postgres:1.2`
 2. Start Postgres client: `docker exec -it postgres psql -U postgres` and select a default schema: `SET search_path TO inventory;`
-3. Start Hazelcast: `./bin/jet-start`
+3. Start Hazelcast Jet 4.4: `./bin/jet-start`
 4. Build the jetjob Maven module: `mvn clean install`
 5. Deploy the resulting JAR: `jet submit ./jetjob/target/jetjob-1.0-SNAPSHOT.jar`
 6. Run the [`NoPortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithoutdomainobject/src/main/java/info/jerrinot/cdcportable/client/client/NoPortableMain.java#L13) inside the clientwithoutdomainobject module
