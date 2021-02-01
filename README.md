@@ -15,7 +15,7 @@ Cache, etc.
 Not relying on User Code Deployment for Domain Objects
 greatly simplify schema evolution and job lifecycle.
 
-## Project Structures:
+## Project Structure:
 The project consists of multiple modules 
 - jetjob - The data pipeline definition. Push changes from Postgres to Hazelcast IMap
 - clientwithoutdomainobject - Illustrates how a client with no domain object on a classpath can still work with the IMap
@@ -37,7 +37,14 @@ Simplified steps are here:
 6. Run the [`NoPortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithoutdomainobject/src/main/java/info/jerrinot/cdcportable/client/client/NoPortableMain.java#L13) inside the clientwithoutdomainobject module
 7. Run the [`PortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithdomainobject/src/main/java/info/jerrinot/cdcportable/client/PortableMain.java#L16) inside the clientwithdomainobject module
 
+## How does it work
+The data pipeline contains a [field mapping definition](https://github.com/jerrinot/cdcportable/blob/e045ca7c127301c1a29df4f5c2e62e5508ce9367/jetjob/src/main/java/info/jerrinot/cdcportable/server/job/JetJobMain.java#L21-L24) between `ChangeRecord` objects, which are emitted by the CDC source, and resulting Portable. 
 
+This mapping is then [passed](https://github.com/jerrinot/cdcportable/blob/e045ca7c127301c1a29df4f5c2e62e5508ce9367/jetjob/src/main/java/info/jerrinot/cdcportable/server/job/JetJobMain.java#L39) to a generic [ChangeRecordMapper](https://github.com/jerrinot/cdcportable/blob/e045ca7c127301c1a29df4f5c2e62e5508ce9367/jetjob/src/main/java/info/jerrinot/cdcportable/server/job/mapping/ChangeRecordMapper.java#L15) which constructs the Portables.
+The mapper uses programmatic construction of the Portable entries thus it does not need bytecode of the Portable objects.
+
+It stores the resulting Portable entries in IMap. This means any client can query the IMap, you can push it over WAN, etc. 
+Again, all this is possible even when server does not have bytecode of the portable entries available.   
 
 ## Prerequisites
 1. JDK 15
