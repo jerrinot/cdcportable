@@ -45,9 +45,17 @@ This mapping is then [passed](https://github.com/jerrinot/cdcportable/blob/e045c
 The mapper uses programmatic construction of the Portable entries thus it does not need bytecode of the Portable objects.
 
 It stores the resulting Portable entries in IMap. This means any client can query the IMap, you can push it over WAN, etc. 
-Again, all this is possible even when server does not have bytecode of the portable entries available.   
+Again, all this is possible even when server does not have bytecode of the portable entries available.
 
-## Architecture Diagram
+When a client does not have a domain object on its classpath then it will receive a GenericRecord. 
+It can still use to extra fields out of the GenericRecord objects, etc. This is useful when it's desirable for clients
+to be as lously couple to your domain model as possible.   
+
+When a client has a Portable domain object and on a classpath then it can query the IMap and it will receive regular
+instances of the domain objects. Thus the client does not have to deal with mappings on its own. 
+This is great for developers productivity.
+
+## Architecture Blueprint
 This depicts target architecture
 ![architecture diagram](https://raw.githubusercontent.com/jerrinot/cdcportable/master/docs/architecture.png)
 
