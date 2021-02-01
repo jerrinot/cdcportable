@@ -13,7 +13,7 @@ Clients can query the IMap, register event listeners, creates Continous Query
 Cache, etc. 
 
 Not relying on User Code Deployment for Domain Objects
-greatly simplify schema evolution and job lifecycle.
+greatly simplifies schema evolution and job lifecycle.
 
 ## Project Structure:
 The project consists of multiple modules 
