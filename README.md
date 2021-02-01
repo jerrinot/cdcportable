@@ -16,7 +16,7 @@ Not relying on User Code Deployment for Domain Objects
 greatly simplifies schema evolution and job lifecycle.
 
 ## Project Structure:
-The project consists of multiple modules 
+The project consists of multiple modules: 
 - jetjob - The data pipeline definition. Push changes from Postgres to Hazelcast IMap
 - clientwithoutdomainobject - Illustrates how a client with no domain object on a classpath can still work with the IMap
 - clientwithdomainobject - Shows how a client with a domain object on a classpath can work with the resulting IMap
