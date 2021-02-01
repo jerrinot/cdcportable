@@ -23,6 +23,11 @@ The project consists of multiple modules
 - utils - Various utility methods
 
 ## How to use it
+The demo is based on [this demo](https://jet-start.sh/docs/next/tutorials/cdc-postgres) except it populates IMap
+with proper Portable objects instead of just strings. You can follow the linked demo to setup infrastructure.
+
+Simplified steps are here: 
+
 1. Use Docker to start Postgres database:  
    `docker run -it --rm --name postgres -p 5432:5432     -e POSTGRES_DB=postgres -e POSTGRES_USER=postgres     -e POSTGRES_PASSWORD=postgres debezium/example-postgres:1.2`
 2. Start Postgres client: `docker exec -it postgres psql -U postgres` and select a default schema: `SET search_path TO inventory;`
@@ -32,8 +37,7 @@ The project consists of multiple modules
 6. Run the [`NoPortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithoutdomainobject/src/main/java/info/jerrinot/cdcportable/client/client/NoPortableMain.java#L13) inside the clientwithoutdomainobject module
 7. Run the [`PortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithdomainobject/src/main/java/info/jerrinot/cdcportable/client/PortableMain.java#L16) inside the clientwithdomainobject module
 
-It's based on [this demo](https://jet-start.sh/docs/next/tutorials/cdc-postgres) except it populates IMap
-with proper Portable objects instead of just strings. You can follow the linked demo to setup infrastructure.  
+
 
 ## Prerequisites
 1. JDK 15
