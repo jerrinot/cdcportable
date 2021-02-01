@@ -2,7 +2,7 @@
 Shows how to push changes from Postgres to Hazelcast IMap
 
 ## What is it good for?
-It creates a highly scalable read-only view into a relational database. 
+It creates a highly scalable read-only automatically updated view into a relational database. 
 Relational databases are notoriously hard to scale. Hazelcast makes it simple.
 
 ## What is unique about it?
