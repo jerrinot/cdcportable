@@ -1,4 +1,4 @@
-# Hazelcast CDC -> Portable
+# CDC -> IMap Portable PoC
 Shows how to push changes from Postgres to Hazelcast IMap
 
 ## What is it good for?
