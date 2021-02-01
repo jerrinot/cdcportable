@@ -6,9 +6,14 @@ It creates a highly scalable read-only view into a relational database.
 Relational databases are notoriously hard to scale. Hazelcast makes it simple.
 
 ## What is unique about it?
-It populates Hazelcast IMap with entries in the Portable format even it does not have 
-any bytecode on a classpath. Clients can still query the IMap, register event listeners,
-creates Continous Query Cache, etc.
+It populates Hazelcast IMap with entries in the Portable format even the server does not have 
+domain object bytecode on its classpath. 
+
+Clients can query the IMap, register event listeners, creates Continous Query
+Cache, etc. 
+
+Not relying on User Code Deployment for Domain Objects
+greatly simplify schema evolution and job lifecycle.
 
 ## Project Structures:
 The project consists of multiple modules 
@@ -26,6 +31,9 @@ The project consists of multiple modules
 5. Deploy the resulting JAR: `jet submit ./jetjob/target/jetjob-1.0-SNAPSHOT.jar`
 6. Run the `NoPortableMain` inside the clientwithoutdomainobject module
 7. Run the `PortableMain` inside the clientwithdomainobject module
+
+It's based on [this demo](https://jet-start.sh/docs/next/tutorials/cdc-postgres) except it populates IMap
+with proper Portable objects instead of just strings. You can follow the linked demo to setup infrastructure.  
 
 ## Prerequisites
 1. JDK 15
