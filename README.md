@@ -36,6 +36,7 @@ Simplified steps are here:
 5. Deploy the resulting JAR: `jet submit ./jetjob/target/jetjob-1.0-SNAPSHOT.jar`
 6. Run the [`NoPortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithoutdomainobject/src/main/java/info/jerrinot/cdcportable/client/client/NoPortableMain.java#L13) inside the clientwithoutdomainobject module
 7. Run the [`PortableMain`](https://github.com/jerrinot/cdcportable/blob/9c0ec43435444d048c57d411708c8361a6f5c6f6/clientwithdomainobject/src/main/java/info/jerrinot/cdcportable/client/PortableMain.java#L16) inside the clientwithdomainobject module
+8. Change a Postgres table by pasting this into the Postgres client started in the step #2: `update customers set last_name = 'NotThomas' where id=1001;` and watch output of NonPortableMain / PortableMain programs  
 
 ## How does it work
 The data pipeline contains a [field mapping definition](https://github.com/jerrinot/cdcportable/blob/e045ca7c127301c1a29df4f5c2e62e5508ce9367/jetjob/src/main/java/info/jerrinot/cdcportable/server/job/JetJobMain.java#L21-L24) between `ChangeRecord` objects, which are emitted by the CDC source, and resulting Portable. 
