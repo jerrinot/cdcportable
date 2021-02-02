@@ -31,10 +31,22 @@ public class ChangeRecordMapper {
     }
 
     public static FunctionEx<? super ChangeRecord, ? extends GenericRecord> keyToPortable(int factoryId,
-                                                                                            int classId,
-                                                                                            MappingDef mapping) {
+                                                                                          int classId,
+                                                                                          MappingDef mapping) {
         return partToPortable(factoryId, classId, mapping, ChangeRecord::key);
     }
+
+
+    // todo: is this casting a good idea? perhaps it would be better
+    // to have a method for each type and check the explicitly
+    public static <T> FunctionEx<? super ChangeRecord, T> extractFromKey(String attributeName) {
+        return (cr -> (T) cr.key().toMap().get(attributeName));
+    }
+
+    public static <T> FunctionEx<? super ChangeRecord, T> extractFromValue(String attributeName) {
+        return (cr -> (T) cr.value().toMap().get(attributeName));
+    }
+
 
     private static FunctionEx<ChangeRecord, GenericRecord> partToPortable(int factoryId, int classId, MappingDef mapping,
                                                                           FunctionEx<ChangeRecord, RecordPart> partExtractor) {

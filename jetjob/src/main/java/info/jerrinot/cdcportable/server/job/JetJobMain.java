@@ -34,7 +34,7 @@ public class JetJobMain {
                 .build();
 
         Sink<ChangeRecord> sink = CdcSinks.map("customers",
-                r -> r.key().toMap().get("id"),
+                ChangeRecordMapper.<Integer>extractFromKey("id"),
                 ChangeRecordMapper.valueToPortable(
                         Constants.CUSTOMER_FACTORY_CLASS_ID, Constants.CUSTOMER_CLASS_ID, MAPPING)
         );
